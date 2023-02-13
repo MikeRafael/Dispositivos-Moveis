@@ -1,0 +1,27 @@
+<Componentes>:
+    ProgressBar:
+        id: pb
+        max: 100
+
+    Slider:
+        id: sl
+        min: 0
+        max: 100
+        value: 0
+        step: 10
+        orientation:'vertical'
+        value_track: True
+        value_track_color: (1,0,0,1)
+        on_touch_move: root.gera_intervalo()
+
+    TextInput:
+        id: tx
+        password: True
+
+    ToggleButton:
+        text:'Male'
+        group:'sex'
+    ToggleButton:
+        text:'Female'
+        group:'sex'
+        state:'down'

@@ -1,0 +1,38 @@
+<Gerenciador>:
+    Atividades:
+        name:"Atividades"
+
+<Atividades>:
+    BoxLayout:
+        orientation:'vertical'
+        ScrollView:
+            BoxLayout:
+                id:box
+                orientation:'vertical'
+                size_hint_y: None           # impede que os labels tenham tamanhos fixos
+                height:self.minimum_height          # aumenta de forma automática
+        BoxLayout:
+            size_hint_y: None
+            height: 60
+            TextInput:
+                id:tarefa
+                font_size:30
+                background_color:(.25, .25, 1, 1)
+            Button:
+                text:'+'
+                size_hint_x: None
+                width: 60
+                on_release: root.addComponente()
+
+<Funcoes>: # Pai
+    size_hint_y: None
+    heigth: 30
+    Label: # Filho 1
+        id:label
+    Button: # Filho 2
+        text:'X'
+        size_hint_x: None
+        width: 60
+        on_release: app.root.ids.box.remove_widget(root)  #root referência ao primeiro widget (principal
+        #on_release: app.root.ids.box.remove_widget(self)  #desse contexto) Funções
+        #on_release: app.root.ids.box.remove_widget(self.parent)  # referencia a app em execução

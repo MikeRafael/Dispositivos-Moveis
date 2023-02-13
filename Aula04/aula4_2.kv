@@ -1,0 +1,73 @@
+<Gerenciador>:
+    Menu:
+        name: 'menu'
+    Atividades:
+        name:"Atividades"
+    Componentes:
+        name:"Componentes"
+<Menu>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 100
+        spacing: 10
+        Button:
+            text: 'Tela1'
+            on_release: app.root.current = 'Atividades'
+        Button:
+            text: 'Tela2'
+            on_release: app.root.current = 'Componentes'
+        Button:
+            text: 'Sair'
+            on_release: app.stop()
+<Componentes>:
+    GridLayout:
+        cols: 2
+        spacing:10
+        Label:
+            text: "Não clicado"
+            id: lbl
+        CheckBox:
+            on_active: root.on_checkbox_Active(self, self.active)
+        Label:
+            text: "Lista Suspensa"
+            id: escolha
+        Spinner:
+            id: spn
+            text: "Lanche Favorito"
+            values: ["X-Tudo","Americano","Bauru"]
+            on_text: root.spinner_Clicado(self.text)
+
+
+<Atividades>:
+    #name: 'Atividades'
+    BoxLayout:
+        orientation:'vertical'
+        ScrollView:
+            BoxLayout:
+                id:box
+                orientation:'vertical'
+                size_hint_y: None           # impede que os labels tenham tamanhos fixos
+                height:self.minimum_height          # aumenta de forma automática
+        BoxLayout:
+            size_hint_y: None
+            height: 60
+            TextInput:
+                id:tarefa
+                font_size:30
+                background_color:(.25, .25, 1, 1)
+            Button:
+                text:'+'
+                size_hint_x: None
+                width: 60
+                on_release: root.addComponente()
+
+<Funcoes>: # Pai
+    size_hint_y: None
+    heigth: 30
+    Label: # Filho 1
+        id:label
+    Button: # Filho 2
+        text:'X'
+        size_hint_x: None
+        width: 60
+        on_release: app.root.get_screen('Atividades').ids.box.remove_widget(root)
